@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Login Form with Netlify Form Handling -->
+    <div class="login-container" id="loginContainer">
+        <h2>Admin Login</h2>
+        <form name="admin-login" method="POST" data-netlify="true" id="loginForm">
+            <input type="hidden" name="form-name" value="admin-login">
+            <input type="password" id="adminPassword" name="password" placeholder="Enter Admin Password">
+            <label>
+                <input type="checkbox" onclick="togglePassword('adminPassword')"> Show Password
+            </label>
+            <button type="button" onclick="validateLogin()">Login</button>
+            <p id="loginMessage"></p>
+        </form>
+    </div>
+
+    <!-- Password Manager Dashboard with Netlify Form Handling -->
+    <div class="dashboard-container" id="dashboardContainer" style="display: none;">
+        <h2>Password Manager</h2>
+        <table id="credentialsTable">
+            <thead>
+                <tr>
+                    <th>Account Name</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+            <tbody id="credentialsBody"></tbody>
+        </table>
+        <form name="credentials" method="POST" data-netlify="true" id="credentialsForm">
+            <input type="hidden" name="form-name" value="credentials">
+            <input type="text" id="accountName" name="accountName" placeholder="Account Name" required>
+            <input type="text" id="accountUsername" name="accountUsername" placeholder="Username" required>
+            <input type="password" id="accountPassword" name="accountPassword" placeholder="Password" required>
+            <label>
+                <input type="checkbox" onclick="togglePassword('accountPassword')"> Show Password
+            </label>
+            <button type="button" onclick="addCredential()">Add Credential</button>
+        </form>
+        <div class="credentials-list" id="credentialsList"></div>
+    </div>
+    <script src="crack.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
